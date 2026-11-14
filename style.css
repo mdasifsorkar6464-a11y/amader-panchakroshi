@@ -294,3 +294,53 @@ main{padding:13px}
 @media(prefers-reduced-motion:reduce){
 *,*:before,*:after{scroll-behavior:auto!important;transition:none!important}
 }
+
+
+/* Religious directory */
+.religion-options{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:13px;
+max-width:650px;
+margin:22px auto 30px
+}
+.religion-option{
+display:flex;
+align-items:center;
+gap:12px;
+padding:17px;
+text-align:left;
+text-decoration:none;
+color:var(--deep);
+background:linear-gradient(145deg,#f7fcf8,#eaf6ee);
+border:1px solid #d8eadf;
+border-radius:17px;
+transition:transform .2s,border-color .2s,box-shadow .2s
+}
+.religion-option:hover{
+transform:translateY(-3px);
+border-color:#a9d2b8;
+box-shadow:var(--shadow)
+}
+.religion-icon{font-size:29px}
+.religion-option strong,.religion-option small{display:block}
+.religion-option strong{font-size:16px}
+.religion-option small,.directory-item small{
+color:var(--muted);
+font-size:12px
+}
+.option-arrow{margin-left:auto;font-size:26px;color:var(--green)}
+.religion-subsection{
+scroll-margin-top:95px;
+padding-top:12px;
+margin-top:22px;
+border-top:1px solid var(--line)
+}
+.religion-subsection .directory-list{max-width:760px;margin-left:auto;margin-right:auto}
+.religion-subsection .directory-item strong,
+.religion-subsection .directory-item small{display:block}
+.religion-subsection .directory-item small{margin-top:3px}
+.directory-note{font-size:13px}
+@media(max-width:420px){
+.religion-options{grid-template-columns:1fr}
+}
