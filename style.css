@@ -1,0 +1,51 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans Bengali","Hind Siliguri",sans-serif;background:#f5f8f6;color:#18352b;line-height:1.7}
+.hero{min-height:390px;background:linear-gradient(135deg,#075c46,#0b9870);color:white;text-align:center;padding:65px 20px 55px}
+.hero-content{max-width:750px;margin:auto}
+.symbol{font-size:40px}
+h1{font-size:clamp(32px,7vw,54px);margin:8px 0 0;font-weight:800}
+.subtitle{font-size:17px;margin:0;color:#d7f5e9}
+.line{width:65px;height:3px;background:#b9f3d7;margin:22px auto}
+.intro{font-size:17px;max-width:580px;margin:0 auto 25px}
+.explore{display:inline-block;text-decoration:none;color:#075c46;background:white;padding:10px 23px;border-radius:30px;font-weight:bold}
+.navigation{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;background:white;padding:13px;box-shadow:0 2px 12px #0000000b;position:sticky;top:0;z-index:5}
+.navigation a{color:#087653;text-decoration:none;font-weight:700}
+main{max-width:1050px;margin:auto;padding:20px}
+.welcome{text-align:center;padding:45px 10px 30px}
+.eyebrow{color:#07805b;font-weight:bold;font-size:14px}
+h2{font-size:25px;margin:8px 0}
+.welcome p,.news-section>p,.info-section p,.about p{color:#61736b;max-width:700px;margin:8px auto}
+.section{text-align:center;padding:30px 0}
+.section-note{color:#718078;margin-top:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px;margin-top:25px}
+.item{background:white;border:1px solid #e4eee8;border-radius:15px;padding:20px 12px;text-decoration:none;color:#18352b;box-shadow:0 5px 18px #173d2b08;transition:.2s}
+.item:hover{transform:translateY(-4px);box-shadow:0 8px 22px #173d2b15}
+.item span{font-size:32px}
+.item h3{margin:8px 0 2px;font-size:17px}
+.item p{font-size:13px;color:#718078;margin:0}
+.news-section,.about{text-align:center;background:white;border-radius:18px;padding:35px 20px;margin:35px 0}
+.empty-news{background:#f3f8f5;border-radius:12px;padding:22px;margin:20px auto 0;max-width:400px;color:#64786e}
+.info-section{padding:24px 18px;margin:15px 0;background:white;border-radius:14px;text-align:center}
+.info-section h2{color:#087653}
+footer{text-align:center;background:#123e30;color:white;padding:28px 15px}
+footer p{font-size:20px;font-weight:bold;margin:0}
+footer small{display:block;color:#d2e9df}
+.copyright{margin-top:12px;font-size:12px}
+@media(max-width:480px){.hero{padding:48px 16px}.navigation{gap:18px;font-size:14px}main{padding:14px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.welcome{padding-top:35px}}
+
+
+.search-section{text-align:center;background:#e8f5ee;border:1px solid #d5e9dc;border-radius:18px;padding:28px 18px;margin:25px 0}
+.search-section p{color:#61736b}
+#siteSearch{width:100%;max-width:600px;padding:15px 18px;border:2px solid #b9d9c8;border-radius:30px;font-size:16px;outline:none;background:white;color:#18352b}
+#siteSearch:focus{border-color:#087f5b;box-shadow:0 0 0 3px #087f5b20}
+#searchStatus{font-size:14px;margin-bottom:0}
+.search-hidden{display:none!important}
+
+
+.village-grid,.directory-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin:18px 0}
+.village-item,.directory-item{background:#f0f7f2;border:1px solid #dcebe1;border-radius:10px;padding:12px;color:#24523e;font-size:14px}
+.directory-item{line-height:1.7}
+.directory-item h3{margin-top:0}
+.village-note{font-size:12px;color:#718078;margin-top:16px}
+.call-button{display:inline-block;background:#087f5b;color:white;text-decoration:none;padding:9px 14px;border-radius:8px;margin:4px 0 12px;font-weight:600}
