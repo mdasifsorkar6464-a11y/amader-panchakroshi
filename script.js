@@ -4,42 +4,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!searchBox || !searchStatus) return;
 
-  const searchableItems = document.querySelectorAll(
-    ".village-item, .directory-item, .religion-subsection"
-  );
+  // Count only actual directory cards, not their parent sections.
+  const searchableItems = document.querySelectorAll(".village-item, .directory-item");
+  const religiousSections = document.querySelectorAll(".religion-subsection");
   const searchableSections = document.querySelectorAll(".info-section");
 
   function normalizeText(text) {
     return text
       .toLowerCase()
       .replace(/[০-৯]/g, digit => "০১২৩৪৫৬৭৮৯".indexOf(digit))
-      .replace(/[^\p{L}\p{N}\s]/gu, " ")
-      .replace(/\s+/g, " ")
+      .replace(/[^\\p{L}\\p{N}\\s]/gu, " ")
+      .replace(/\\s+/g, " ")
       .trim();
   }
 
-  searchBox.addEventListener("input", function () {
-    const query = normalizeText(this.value);
+  function updateSearch() {
+    const query = normalizeText(searchBox.value);
     let matches = 0;
 
     searchableItems.forEach(function (item) {
-      const found =
-        query === "" || normalizeText(item.textContent).includes(query);
-
+      const found = query === "" || normalizeText(item.textContent).includes(query);
       item.classList.toggle("search-hidden", !found);
       if (found && query !== "") matches++;
     });
 
-    searchableSections.forEach(function (section) {
-      const visibleItems = section.querySelectorAll(
-        ".village-item:not(.search-hidden), .directory-item:not(.search-hidden), .religion-subsection:not(.search-hidden)"
-      );
-      const hasMatch = visibleItems.length > 0;
+    religiousSections.forEach(function (section) {
+      const hasMatch = section.querySelector(".directory-item:not(.search-hidden)") !== null;
+      section.classList.toggle("search-hidden", query !== "" && !hasMatch);
+    });
 
-      section.classList.toggle(
-        "search-hidden",
-        query !== "" && !hasMatch
-      );
+    searchableSections.forEach(function (section) {
+      const hasMatch =
+        section.querySelector(".village-item:not(.search-hidden)") !== null ||
+        section.querySelector(".directory-item:not(.search-hidden)") !== null;
+
+      section.classList.toggle("search-hidden", query !== "" && !hasMatch);
     });
 
     if (query === "") {
@@ -47,8 +46,16 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (matches > 0) {
       searchStatus.textContent = "মিল পাওয়া গেছে: " + matches + "টি";
     } else {
-      searchStatus.textContent =
-        "দুঃখিত, এই নামে এখনো কোনো তথ্য যোগ করা হয়নি।";
+      searchStatus.textContent = "দুঃখিত, এই নামে এখনো কোনো তথ্য যোগ করা হয়নি।";
+    }
+  }
+
+  searchBox.addEventListener("input", updateSearch);
+  searchBox.addEventListener("search", updateSearch);
+  searchBox.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && searchBox.value) {
+      searchBox.value = "";
+      updateSearch();
     }
   });
 });
