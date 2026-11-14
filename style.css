@@ -353,3 +353,25 @@ border-top:1px solid var(--line)
 .village-sources{font-size:12px!important;margin-top:14px!important}
 .village-sources a{color:var(--green);font-weight:700;text-underline-offset:3px}
 .village-sources a:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+
+
+/* Keyboard accessibility */
+.skip-link{
+position:absolute;
+top:10px;
+left:10px;
+z-index:20;
+transform:translateY(-160%);
+padding:10px 16px;
+border-radius:10px;
+background:#fff;
+color:var(--deep);
+font-weight:800;
+box-shadow:var(--shadow)
+}
+.skip-link:focus{transform:translateY(0)}
+a:focus-visible{
+outline:3px solid #e2a900;
+outline-offset:3px;
+border-radius:8px
+}
