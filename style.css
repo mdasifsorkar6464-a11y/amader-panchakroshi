@@ -344,3 +344,12 @@ border-top:1px solid var(--line)
 @media(max-width:420px){
 .religion-options{grid-template-columns:1fr}
 }
+
+
+/* Village population details */
+.village-item strong,.village-item small{display:block}
+.village-item strong{font-size:14px;color:var(--deep)}
+.village-item small{margin-top:4px;color:var(--muted);font-size:11px}
+.village-sources{font-size:12px!important;margin-top:14px!important}
+.village-sources a{color:var(--green);font-weight:700;text-underline-offset:3px}
+.village-sources a:focus-visible{outline:2px solid var(--green);outline-offset:3px}

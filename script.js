@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!searchBox || !searchStatus) return;
 
   const searchableItems = document.querySelectorAll(
-    ".village-item, .directory-item"
+    ".village-item, .directory-item, .religion-subsection"
   );
   const searchableSections = document.querySelectorAll(".info-section");
 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     searchableSections.forEach(function (section) {
       const visibleItems = section.querySelectorAll(
-        ".village-item:not(.search-hidden), .directory-item:not(.search-hidden)"
+        ".village-item:not(.search-hidden), .directory-item:not(.search-hidden), .religion-subsection:not(.search-hidden)"
       );
       const hasMatch = visibleItems.length > 0;
 
