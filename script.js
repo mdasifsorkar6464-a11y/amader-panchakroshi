@@ -18,12 +18,33 @@ document.addEventListener("DOMContentLoaded", function () {
       .trim();
   }
 
+  function getQueryVariants(query) {
+    const aliases = [
+      ["স্কুল", "বিদ্যালয়"],
+      ["বিদ্যালয়", "স্কুল"],
+      ["হাট", "বাজার"],
+      ["বাজার", "হাট"],
+      ["হাসপাতাল", "স্বাস্থ্য কমপ্লেক্স"],
+      ["স্বাস্থ্য কমপ্লেক্স", "হাসপাতাল"]
+    ];
+
+    const variants = [query];
+    aliases.forEach(function ([word, alternative]) {
+      if (query.includes(word)) {
+        variants.push(query.replace(word, alternative));
+      }
+    });
+    return [...new Set(variants)];
+  }
+
   function updateSearch() {
     const query = normalizeText(searchBox.value);
+    const queryVariants = getQueryVariants(query);
     let matches = 0;
 
     searchableItems.forEach(function (item) {
-      const found = query === "" || normalizeText(item.textContent).includes(query);
+      const itemText = normalizeText(item.textContent);
+      const found = query === "" || queryVariants.some(term => itemText.includes(term));
       item.classList.toggle("search-hidden", !found);
       if (found && query !== "") matches++;
     });
