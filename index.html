@@ -32,6 +32,22 @@
     </div>
   </header>
 
+  <section class="home-map" aria-labelledby="home-map-title">
+    <div class="home-map-copy">
+      <span class="map-kicker">আমাদের এলাকা</span>
+      <h2 id="home-map-title">মানচিত্রে পঞ্চক্রোশী</h2>
+      <p>পঞ্চক্রোশী ইউনিয়নকে মানচিত্রে দেখুন।</p>
+      <button type="button" class="location-button" id="showUnionLocation" aria-controls="unionLocationPanel" aria-expanded="false">📍 লোকেশন দেখুন</button>
+    </div>
+    <div class="map-art" aria-hidden="true"><span>পঞ্চক্রোশী</span><i>🌿</i><b></b><em></em></div>
+    <div class="union-location-panel" id="unionLocationPanel" hidden>
+      <div class="map-panel-heading"><div><strong>পঞ্চক্রোশী ইউনিয়ন</strong><small>উল্লাপাড়া, সিরাজগঞ্জ</small></div><button type="button" id="closeUnionLocation" aria-label="মানচিত্র বন্ধ করুন">×</button></div>
+      <div id="unionMap" role="region" aria-label="পঞ্চক্রোশী ইউনিয়নের মানচিত্র"><p class="map-loading">মানচিত্র লোড হচ্ছে…</p></div>
+      <p class="map-boundary-note">ইউনিয়নের বাইরের এলাকা বাদ দিয়ে সীমানা দেখানোর ব্যবস্থা করা হয়েছে। গ্রামের আলাদা সীমানার নির্ভুল সরকারি ডিজিটাল তথ্য পাওয়া গেলে সেগুলোও যুক্ত করা হবে।</p>
+      <p class="map-attribution">সীমানা তথ্য: geoBoundaries / BBS-OCHA · মানচিত্র: OpenStreetMap</p>
+    </div>
+  </section>
+
   <nav class="navigation" aria-label="প্রধান নেভিগেশন">
     <a href="#sections">বিভাগসমূহ</a>
     <a href="#news">খবর</a>
