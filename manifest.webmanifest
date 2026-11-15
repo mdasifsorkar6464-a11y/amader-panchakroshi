@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "আমাদের পঞ্চক্রোশী",
+  "short_name": "আমাদের পঞ্চক্রোশী",
+  "description": "পঞ্চক্রোশী ইউনিয়নের স্থানীয় তথ্য ও সংবাদকেন্দ্র",
+  "lang": "bn-BD",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4faf6",
+  "theme_color": "#087f5b",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
