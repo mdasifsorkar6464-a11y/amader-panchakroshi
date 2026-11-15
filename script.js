@@ -112,24 +112,28 @@ document.addEventListener("DOMContentLoaded", function () {
     };
     loadLeaflet().then(() => {
       mapNode.innerHTML = "";
-      const map = L.map(mapNode, { scrollWheelZoom: false }).setView([24.3243, 89.6001], 13);
+      const map = L.map(mapNode, { scrollWheelZoom: false, maxZoom: 18 }).setView([24.3243, 89.6001], 13);
       window.unionMapInstance = map;
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19, attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
-      const query = "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/bgd_adm4_union/FeatureServer/0/query?where=ADM4_EN%3D%27Pancha%20Krushi%27&outFields=*&returnGeometry=true&outSR=4326&f=geojson";
+      const query = "https://services.arcgis.com/5T5nSi527N4F7luB/ArcGIS/rest/services/bgd_adm4_union/FeatureServer/0/query?where=ADM4_EN%3D%27Pancha%20Krushi%27%20AND%20ADM3_EN%3D%27Ullapara%27%20AND%20ADM2_EN%3D%27Sirajganj%27&outFields=ADM4_EN%2CADM3_EN%2CADM2_EN%2CADM4_PCODE&returnGeometry=true&outSR=4326&f=geojson";
       fetch(query).then(response => {
         if (!response.ok) throw new Error("Boundary unavailable");
         return response.json();
       }).then(data => {
         if (!data.features || !data.features.length) throw new Error("Boundary not found");
-        const boundary = L.geoJSON(data, { style: { color: "#087653", weight: 3, fillColor: "#53b982", fillOpacity: 0.18 } }).addTo(map);
-        map.fitBounds(boundary.getBounds(), { padding: [12, 12] });
-        boundary.bindPopup("পঞ্চক্রোশী ইউনিয়ন");
+        if (data.features.length !== 1) throw new Error("Expected exactly one union boundary");
+        const feature = data.features[0];
+        const props = feature.properties || {};
+        if (props.ADM4_EN !== "Pancha Krushi" || props.ADM3_EN !== "Ullapara" || props.ADM2_EN !== "Sirajganj") throw new Error("Boundary did not match Panchakroshi Union");
+        const boundary = L.geoJSON(feature, { style: { color: "#075f45", weight: 4, opacity: 1, fillColor: "#45ad78", fillOpacity: 0.12, lineJoin: "round" } }).addTo(map);
+        const bounds = boundary.getBounds();
+        map.fitBounds(bounds, { padding: [18, 18] });
+        map.setMaxBounds(bounds.pad(0.04));
+        boundary.bindPopup("পঞ্চক্রোশী ইউনিয়ন · উল্লাপাড়া · সিরাজগঞ্জ");
       }).catch(() => {
-        L.marker([24.3243, 89.6001]).addTo(map).bindPopup("পঞ্চক্রোশী ইউনিয়ন").openPopup();
-        map.setView([24.3243, 89.6001], 13);
-        mapNode.insertAdjacentHTML("afterend", '<p class="map-boundary-note">ইউনিয়নের সীমানার ডেটা এই মুহূর্তে পাওয়া যায়নি; মানচিত্রে কেন্দ্রের অবস্থান দেখানো হচ্ছে।</p>');
+        mapNode.insertAdjacentHTML("afterend", '<p class="map-boundary-note">পঞ্চক্রোশী ইউনিয়নের নির্ভুল সীমানার ডেটা এখন পাওয়া যায়নি। ভুল লোকেশন বা অনুমানভিত্তিক সীমানা দেখানো হচ্ছে না।</p>');
       });
       setTimeout(() => map.invalidateSize(), 150);
     }).catch(() => {
