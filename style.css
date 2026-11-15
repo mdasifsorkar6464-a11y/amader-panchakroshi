@@ -385,10 +385,11 @@ border-radius:8px
 .home-map-copy p{color:var(--muted);margin:0 0 16px}
 .location-button{border:0;border-radius:25px;padding:12px 20px;background:linear-gradient(135deg,#087f5b,#0a986c);color:#fff;font:inherit;font-weight:800;box-shadow:0 6px 16px #087f5b2b;cursor:pointer}
 .location-button:focus-visible,.map-panel-heading button:focus-visible{outline:3px solid #e2a900;outline-offset:3px}
-.map-art{height:150px;position:relative;display:grid;place-items:center;color:#087653;font-weight:900}
-.map-art:before{content:"";position:absolute;width:155px;height:130px;background:#b8e4c9;clip-path:polygon(22% 4%,73% 0,96% 30%,87% 76%,59% 94%,20% 83%,2% 48%);border:2px solid #087653;filter:drop-shadow(0 8px 5px #064b3922)}
-.map-art:after{content:"";position:absolute;width:130px;height:105px;border:2px dashed #087653;clip-path:polygon(22% 4%,73% 0,96% 30%,87% 76%,59% 94%,20% 83%,2% 48%)}
-.map-art span,.map-art i{position:relative;z-index:1}.map-art i{font-size:23px;margin-top:-28px}
+.map-art{height:150px;display:grid;place-items:center;text-align:center;color:#087653}
+.map-art-icon{width:100%;display:grid;justify-items:center;gap:7px}
+.map-art-icon span{font-size:38px;line-height:1}
+.map-art-icon strong{font-size:15px}
+.map-art-icon small{font-size:11px;color:#527b64}
 .union-location-panel{grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px}
 .map-panel-heading{display:flex;justify-content:space-between;align-items:center;text-align:left;padding:2px 4px 10px}
 .map-panel-heading strong,.map-panel-heading small{display:block}.map-panel-heading small{font-size:12px;color:var(--muted)}
