@@ -407,3 +407,10 @@ border-radius:8px
 .footer-links{display:flex;justify-content:center;gap:10px 20px;flex-wrap:wrap;margin:14px auto 4px}
 .footer-links a{color:#e2f6e9;text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:700}
 .footer-links a:focus-visible{outline:2px solid #fff;outline-offset:4px;border-radius:4px}
+
+
+/* Improve directory readability on narrow phones */
+@media(max-width:420px){
+  .directory-list{grid-template-columns:1fr}
+  .directory-item{min-width:0;overflow-wrap:anywhere}
+}
