@@ -399,3 +399,9 @@ border-radius:8px
 .map-boundary-note,.map-attribution{font-size:12px!important;text-align:left;color:var(--muted);margin:9px 2px 0!important}
 .map-attribution{font-size:10px!important}
 @media(max-width:600px){.home-map{grid-template-columns:1fr;padding:20px 16px;gap:4px}.home-map-copy{text-align:center}.map-art{height:112px}.union-location-panel{padding:9px}#unionMap{height:330px}}
+
+
+/* Footer policy links */
+.footer-links{display:flex;justify-content:center;gap:10px 20px;flex-wrap:wrap;margin:14px auto 4px}
+.footer-links a{color:#e2f6e9;text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:700}
+.footer-links a:focus-visible{outline:2px solid #fff;outline-offset:4px;border-radius:4px}
